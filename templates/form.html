@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% if user_story %}
+        <title>Super Sprinter 3000 - Edit Story</title>
+    {% else %}
+        <title>Super Sprinter 3000 - Add new Story</title>
+    {% endif %}
+</head>
+<body>
+
+{% if user_story %}
+    <h3>User Story Manager - Edit Story</h3>
+    <form action="{{ url_for('update_story') }}" method="post" class=update-story>
+        <dl>
+            <input type="hidden" name="id" value={{user_story.id}}>
+            <dt><label for="title">Story Title</label>:
+                <dd><input type=text size=30 name=title value={{user_story.title}}>
+            <dt><label for="story">User Story</label>:
+                <dd><textarea name=story rows=5 cols=40>{{user_story.story}}</textarea>
+            <dt><label for="criteria">Acceptance Criteria</label>:
+                <dd><textarea name=criteria rows=5 cols=40>{{user_story.acceptance_criteria}}</textarea>
+            <dt><label for="value">Business Value</label>:
+                <dd><input type="range" name="business_value" id="valuein_id" value="600" min="50" max="1500" step="100" oninput="valueout_id.value = valuein_id.value">
+                <output name="value_out" id="valueout_id">{{user_story.business_value}}</output>
+            <dt><label for="estimation">Estimation (h)</label>:
+                <dd><input type="range" name="estimation" id="estimationin_id" value="6" min="0.5" max="40" step="0.5" oninput="estimationout_id.value = estimationin_id.value">
+                <output name="estimation_out" id="estimationout_id">{{user_story.estimation}}</output>
+            <dt><label for="status">Status</label>
+                <select name="status">
+                <option value="Planning">Planning</option>
+                <option value="To Do">To Do</option>
+                <option value="In Progress">In Progress</option>
+                <option value="Review">Review</option>
+                <option value="Done">Done</option>
+                </select>
+            <dd><br><input type="submit" value="Update">
+        </dl>
+    </form>
+{% else %}
+    <h3>User Story Manager - Add new Story</h3>
+    <form action="{{ url_for('add_story') }}" method="post" class=add-story>
+        <dl>
+            <dt><label for="title">Story Title</label>:
+                <dd><input type=text size=30 name=title>
+            <dt><label for="story">User Story</label>:
+                <dd><textarea name=story rows=5 cols=40></textarea>
+            <dt><label for="criteria">Acceptance Criteria</label>:
+                <dd><textarea name=criteria rows=5 cols=40></textarea>
+            <dt><label for="value">Business Value</label>:
+                <dd><input type="range" name="business_value" id="value_in_id" value="800" min="100" max="1500" step="100" oninput="value_out_id.value = value_in_id.value">
+                <output name="value_out" id="value_out_id">800</output>
+            <dt><label for="estimation">Estimation (h)</label>:
+                <dd><input type="range" name="estimation" id="estimation_in_id" value="20" min="0.5" max="40" step="0.5" oninput="estimation_out_id.value = estimation_in_id.value">
+                <output name="estimation_out" id="estimation_out_id">20</output>
+            <dt><label for="status">Status</label>
+                <select name="status">
+                <option value="Planning">Planning</option>
+                <option value="To Do">To Do</option>
+                <option value="In Progress">In Progress</option>
+                <option value="Review">Review</option>
+                <option value="Done">Done</option>
+                </select>
+            <dd><br><input type="submit" value="Create">
+        </dl>
+    </form>
+{% endif %}
+
+
+</body>
+</html>

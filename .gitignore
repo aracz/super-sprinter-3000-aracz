@@ -87,3 +87,7 @@ ENV/
 
 # Rope project settings
 .ropeproject
+/username.txt
+.idea/
+icons/
+username.txt

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Super Sprinter 3000 </title>
+
+    <style>
+        th {
+            border: 3px solid #dddddd;
+            text-align: center;
+            padding: 10px;
+        }
+
+        td {
+            border: 3px solid #dddddd;
+            text-align: left;
+            padding: 10px;
+        }
+    </style>
+
+</head>
+
+<body>
+
+<h3>User Story Manager</h3>
+
+<a href="/story/0">
+    <input type="button" value="Add New User Story"/>
+</a>
+
+
+<table style="width:100%" id="myTable">
+    <tr>
+        <th>ID</th>
+        <th>Story Title</th>
+        <th>User Story</th>
+        <th>Acceptance Criteria</th>
+        <th>Business Value</th>
+        <th>Estimation</th>
+        <th>Status</th>
+        <th>Edit</th>
+        <th>Delete</th>
+    </tr>
+    {% for item in sprinters %}
+    <tr>
+        <td>{{ item.id }}</td>
+        <td>{{ item.title }}</td>
+        <td>{{ item.story }}</td>
+        <td>{{ item.acceptance_criteria }}</td>
+        <td>{{ item.business_value }}</td>
+        <td>{{ item.estimation }}</td>
+        <td>{{ item.status }}</td>
+        <td align="right"><a href="/story/{{ item.id }}">
+            <input type="image" src="/static/pencil.png" name="Edit" id="edit" style="width:50px;height:50px;"/>
+        </a>
+        </td>
+        <td align="center"><a href="/delete/{{ item.id }}">
+            <input type="image" src="/static/bin.png" name="Delete" id="delete" style="width:50px;height:50px;"/>
+        </a>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+
+
+</body>
+</html>
