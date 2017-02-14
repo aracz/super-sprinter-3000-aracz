@@ -3,7 +3,7 @@ from peewee import *
 
 with open('username.txt', 'r') as myfile:
     data = myfile.read()
-    db = PostgresqlDatabase(data, user=data)
+    db = PostgresqlDatabase('aracz', user='aracz')
 
 
 class SuperSprinter(Model):

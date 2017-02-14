@@ -3,8 +3,7 @@ from flask import *
 from model import *
 
 app = Flask(__name__)
-app.config.update(dict(
-    secret_key='development key'))
+app.secret_key = 'development key'
 
 
 @app.route('/')
@@ -42,7 +41,7 @@ def add_story():
     business_value = request.form['business_value']
     estimation = request.form['estimation']
     status = request.form['status']
-    new_story = Sprinter.create(title=title,
+    new_story = SuperSprinter.create(title=title,
                                 story=story,
                                 acceptance_criteria=acceptance_criteria,
                                 business_value=business_value,
@@ -62,7 +61,7 @@ def update_story():
     business_value = request.form['business_value']
     estimation = request.form['estimation']
     status = request.form['status']
-    user_story = Sprinter.update(title=title,
+    user_story = SuperSprinter.update(title=title,
                                  story=story,
                                  acceptance_criteria=acceptance_criteria,
                                  business_value=business_value,

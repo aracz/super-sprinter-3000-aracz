@@ -42,7 +42,7 @@
         <th>Edit</th>
         <th>Delete</th>
     </tr>
-    {% for item in sprinters %}
+    {% for item in sprinter %}
     <tr>
         <td>{{ item.id }}</td>
         <td>{{ item.title }}</td>
@@ -52,11 +52,11 @@
         <td>{{ item.estimation }}</td>
         <td>{{ item.status }}</td>
         <td align="right"><a href="/story/{{ item.id }}">
-            <input type="image" src="/icons/pencil.png" name="Edit" id="edit" style="width:50px;height:50px;"/>
+            <input type="image" src="{{url_for('static', filename='pencil.png')}}" name="Edit" id="edit" style="width:50px;height:50px;"/>
         </a>
         </td>
         <td align="center"><a href="/delete/{{ item.id }}">
-            <input type="image" src="/icons/bin.png" name="Delete" id="delete" style="width:50px;height:50px;"/>
+            <input type="image" src="{{url_for('static',filename='bin.png')}}" name="Delete" id="delete" style="width:50px;height:50px;"/>
         </a>
         </td>
     </tr>
